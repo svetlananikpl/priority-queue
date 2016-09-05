@@ -10,24 +10,16 @@ class PriorityQueue {
 
     push(data, priority) {
 
-        try {
             if (this.heap.size() < this.maxSize) {
                 this.heap.push(data, priority);
             } else throw new Error();
-        } catch (e) {
-            alert("Error");
-        }
     }
 
     shift() {
-        try {
+
             if (this.heap.root != null) {
                 return this.heap.pop();
             } else throw new Error();
-        } catch (e) {
-            alert("Error");
-        }
-
     }
 
     size() {

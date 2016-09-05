@@ -16,7 +16,7 @@ class MaxHeap {
         if (this.root != null) {
             var detached = this.detachRoot();
             this.restoreRootFromLastInsertedNode(detached);
-            if(this.root!=null){
+            if (this.root != null) {
                 this.shiftNodeDown(this.root);
             }
             return detached.data;
@@ -135,20 +135,20 @@ class MaxHeap {
     shiftNodeDown(node) {
         if (node.left != null) {
             if (node.right != null && node.right.priority > node.left.priority && node.right.priority > node.priority) {
-                    if (this.parentNodes.includes(node.right) && this.parentNodes.includes(node)) {
-                        var nodeIndex = this.parentNodes.indexOf(node.right);
-                        var nodeParentIndex = this.parentNodes.indexOf(node);
-                        this.parentNodes[nodeParentIndex] = node.right;
-                        this.parentNodes[nodeIndex] = node;
-                    } else {
-                        this.parentNodes[this.parentNodes.indexOf(node.left)] = node;
-                    }
+                if (this.parentNodes.includes(node.right) && this.parentNodes.includes(node)) {
+                    var nodeIndex = this.parentNodes.indexOf(node.right);
+                    var nodeParentIndex = this.parentNodes.indexOf(node);
+                    this.parentNodes[nodeParentIndex] = node.right;
+                    this.parentNodes[nodeIndex] = node;
+                } else {
+                    this.parentNodes[this.parentNodes.indexOf(node.left)] = node;
+                }
 
-                    node.right.swapWithParent();
-                    if (node == this.root) {
-                        this.root = node.parent;
-                    }
-                    this.shiftNodeDown(node);
+                node.right.swapWithParent();
+                if (node == this.root) {
+                    this.root = node.parent;
+                }
+                this.shiftNodeDown(node);
 
             } else if (node.left.priority > node.priority) {
                 if (this.parentNodes.includes(node.left) && this.parentNodes.includes(node)) {
@@ -171,35 +171,33 @@ class MaxHeap {
     }
 
 
-print(str)
-{
-    console.log("\n" + str + "\n");
-    if (this.root != null) {
-        this.printNode(this.root, 0);
-    }
-}
-
-printNode(node, level)
-{
-    if (level > 5) {
-        return;
-    }
-    if (node.left != null) {
-        this.printNode(node.left, level + 1);
-    }
-    var line = "";
-    for (var i = 0; i < level; i++) {
-        line = line + "          ";
-    }
-    console.log(line + node.priority + " [" + node.data + "]" + "  (L:" + (node.left == null ? "N" : node.left.priority) +
-        " R:" + (node.right == null ? "N" : node.right.priority) +
-        " P:" + (node.parent == null ? "N" : node.parent.priority) + ")"
-    );
-    if (node.right != null) {
-        this.printNode(node.right, level + 1);
+    /*print(str) {
+        console.log("\n" + str + "\n");
+        if (this.root != null) {
+            this.printNode(this.root, 0);
+        }
     }
 
-}
+    printNode(node, level) {
+        if (level > 5) {
+            return;
+        }
+        if (node.left != null) {
+            this.printNode(node.left, level + 1);
+        }
+        var line = "";
+        for (var i = 0; i < level; i++) {
+            line = line + "          ";
+        }
+        console.log(line + node.priority + " [" + node.data + "]" + "  (L:" + (node.left == null ? "N" : node.left.priority) +
+            " R:" + (node.right == null ? "N" : node.right.priority) +
+            " P:" + (node.parent == null ? "N" : node.parent.priority) + ")"
+        );
+        if (node.right != null) {
+            this.printNode(node.right, level + 1);
+        }
+
+    }*/
 }
 
 module
